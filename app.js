@@ -23,7 +23,7 @@ function updateStepUI() {
   const stepCounter = document.getElementById('stepCounter');
   if (stepCounter) {
     if (currentStep <= 4) {
-      stepCounter.textContent = `Story (Scene ${currentStep} of 4)`;
+      stepCounter.textContent = `Graphic Novel (Scene ${currentStep} of 4)`;
     } else if (currentStep === 5) {
       stepCounter.textContent = `Story Complete`;
     } else if (currentStep === 6) {

@@ -193,6 +193,55 @@ body {
   letter-spacing: 0.5px;
 }
 
+/* Modern Indian Graphic Storybook Page Layout */
+.graphic-story-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.graphic-novel-frame {
+  position: relative;
+  width: 100%;
+  border-radius: var(--radius-arch);
+  border: 1.5px solid var(--accent-gold);
+  overflow: hidden;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.65), inset 0 0 20px rgba(0, 0, 0, 0.4);
+  background: var(--bg-card);
+}
+
+.graphic-novel-img {
+  width: 100%;
+  height: auto;
+  max-height: 480px;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.graphic-novel-frame:hover .graphic-novel-img {
+  transform: scale(1.012);
+}
+
+.editorial-caption-bar {
+  background: linear-gradient(135deg, rgba(34, 26, 21, 0.95), rgba(20, 15, 12, 0.98));
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--accent-gold);
+  border-radius: 6px;
+  padding: 14px 20px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+
+.caption-text {
+  font-family: var(--font-serif);
+  font-size: 1.02rem;
+  font-style: italic;
+  color: var(--bg-parchment);
+  line-height: 1.5;
+  margin: 0;
+}
+
 /* Scene Visual Frames (Atmospheric Time-of-Day Progression with Editorial Storybook Illustrations) */
 .scene-visual {
   height: 180px;
@@ -255,6 +304,160 @@ body {
   background: linear-gradient(180deg, rgba(20, 16, 26, 0.1) 0%, rgba(20, 16, 26, 0.75) 100%), 
               url('images/scene4_twilight.jpg') center/cover no-repeat;
   border-color: rgba(168, 84, 58, 0.4);
+}
+
+/* =========================================================
+   INTERACTIVE GRAPHIC NOVEL / DIGITAL COMIC SYSTEM
+   ========================================================= */
+
+.comic-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-top: 6px;
+}
+
+@media (max-width: 680px) {
+  .comic-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.comic-panel {
+  background: linear-gradient(180deg, #221A15 0%, #19120D 100%);
+  border: 1px solid rgba(196, 154, 74, 0.3);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  position: relative;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.comic-panel:hover {
+  border-color: rgba(196, 154, 74, 0.6);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.65);
+}
+
+.comic-panel-header {
+  padding: 8px 14px;
+  background: #120C09;
+  border-bottom: 1px solid rgba(196, 154, 74, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.panel-num {
+  font-family: var(--font-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+}
+
+.panel-art-frame {
+  position: relative;
+  width: 100%;
+  height: 230px;
+  background: #0E0906;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.panel-art-frame svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Narration box overlay inside panel */
+.narration-box {
+  background: rgba(18, 13, 10, 0.92);
+  border-left: 3px solid var(--accent-gold);
+  padding: 10px 14px;
+  margin: 12px;
+  border-radius: 0 6px 6px 0;
+  font-size: 0.88rem;
+  color: var(--text-main);
+  line-height: 1.45;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.narration-box p {
+  margin: 0;
+  font-style: italic;
+  font-family: var(--font-sans);
+}
+
+/* Speech bubble overlay inside panel */
+.speech-bubble {
+  position: relative;
+  background: var(--bg-parchment-light);
+  color: var(--text-dark);
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--border-parchment);
+}
+
+.speech-bubble::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 24px;
+  border-width: 0 8px 8px 8px;
+  border-style: solid;
+  border-color: transparent transparent var(--bg-parchment-light) transparent;
+}
+
+.speaker-tag {
+  font-family: var(--font-serif);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: var(--accent-terracotta);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 3px;
+}
+
+.speech-text {
+  font-size: 0.88rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--text-dark);
+}
+
+/* Panel result / consequence badge */
+.panel-status-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 4px;
+  margin: 10px 12px 12px;
+  text-align: center;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.panel-status-badge.success {
+  background: rgba(104, 138, 88, 0.22);
+  color: var(--accent-green-light);
+  border: 1px solid rgba(104, 138, 88, 0.45);
+}
+
+.panel-status-badge.danger {
+  background: rgba(168, 84, 58, 0.22);
+  color: var(--accent-terracotta-light);
+  border: 1px solid rgba(168, 84, 58, 0.45);
 }
 
 /* Story Narrative Body Text */
